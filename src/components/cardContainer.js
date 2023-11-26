@@ -26,7 +26,7 @@ export default function CardContainer({
     if (tasks && tasks.length > 0) {
       let temp = [...tasks];
       temp.sort((a, b) => {
-        if (orderBy === "title" || a.priority === b.priority) {
+        if (orderBy === "title" || groupBy == "priority") {
           return a.title.localeCompare(b.title);
         }
         return a.priority - b.priority;
@@ -43,7 +43,7 @@ export default function CardContainer({
       setGroupHeader(name);
       setUserAvailable(available);
     } else {
-      // mapping priority values to corresponding string 
+      // mapping priority values to corresponding string
       if ([0, 1, 2, 3, 4].includes(group)) {
         group = priority[group];
       }

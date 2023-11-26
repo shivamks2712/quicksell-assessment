@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const dummydata = {
   tickets: [
     {
@@ -90,24 +92,33 @@ const dummydata = {
     { id: "usr-5", name: "Suresh", available: true },
   ],
 };
+
+
 async function fetchData(){
-  await res
+  try {
+    const res = await axios.get('https://api.quicksell.co/v1/internal/frontend-assignment');
+    return res.data;
+  } catch(err) {
+    console.error(err);
+  }
 }
-function getDataInMap(val) {
+
+function getDataInMap(appData, val) {
   let filteredData = new Map();
-  dummydata.tickets.forEach((element) => {
+  appData.tickets.forEach((element) => {
     if (!filteredData.get(element[val])) filteredData.set(element[val], []);
     filteredData.get(element[val]).push(element);
   });
 
   return filteredData;
 }
-function getUserData() {
+
+function getUserData(appData) {
   let userData = new Map();
-  dummydata.users.forEach((e) => {
+  appData.users.forEach((e) => {
     userData.set(e.id, e);
   });
 
   return userData;
 }
-export { getDataInMap, getUserData };
+export { fetchData, getDataInMap, getUserData };

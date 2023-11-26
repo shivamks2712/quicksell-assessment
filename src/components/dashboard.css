@@ -10,3 +10,9 @@
 .dashboard::-webkit-scrollbar {
   display: none;
 }
+.loadingIndicator {
+  text-align: center;
+  font-weight: 600;
+  font-size: large;
+  margin-top: 10px;
+}

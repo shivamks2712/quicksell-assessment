@@ -1,18 +1,34 @@
 import CardContainer from "./cardContainer";
-import { getDataInMap, getUserData } from "../service/taskData";
+import { fetchData, getDataInMap, getUserData } from "../service/taskData";
 import { useEffect, useState } from "react";
 import "./dashboard.css";
 
 export default function DashBoard({ groupBy, orderBy }) {
-  var [task, setTask] = useState([]); // State to store task data
-
+  const [task, setTask] = useState([]); // State to store task data
+  const [appData, setAppData] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [userData, setUserData] = useState(new Map()); // State to store user data
+
   useEffect(() => {
-    setUserData(getUserData()); // Fetching user data and updating state on component mount
+    fetchTasks();
   }, []);
 
   useEffect(() => {
-    let mp = getDataInMap(groupBy); // Fetching task data as map based on the groupBy criteria
+    // formating andd filtering data into diffrent categories based on filter options.
+    if (!loading) formatAppData(appData);
+  }, [groupBy]);
+
+  // task to fetch the task and user information data from the given API route.
+  async function fetchTasks() {
+    setLoading(true);
+    let tempappData = await fetchData();
+    setAppData(tempappData);
+    formatAppData(tempappData);
+    setLoading(false);
+  }
+  // formatAppData parse the json object extract out tasks and create diffrent array of tasks based on filter selected by users.
+  function formatAppData(tasksdata) {
+    let mp = getDataInMap(tasksdata, groupBy); // Fetching task data as map based on the groupBy criteria
     let temptask = [];
     for (let [key, value] of mp) {
       temptask.push([key, value]); // Organizing task data into an array for rendering
@@ -29,8 +45,10 @@ export default function DashBoard({ groupBy, orderBy }) {
       });
     }
     setTask(temptask); // Updating the task state with the sorted/organized data
-  }, [groupBy]);
+    setUserData(getUserData(tasksdata));
+  }
 
+  if (loading) return <p className="loadingIndicator">Loading Tasks...</p>;
   return (
     <div className="dashboard">
       {" "}
