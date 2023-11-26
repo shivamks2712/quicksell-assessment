@@ -6,6 +6,7 @@
   overflow-y: scroll;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  min-height: 90vh;
 }
 .dashboard::-webkit-scrollbar {
   display: none;

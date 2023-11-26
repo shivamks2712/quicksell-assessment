@@ -28,6 +28,8 @@ export default function DashBoard({ groupBy, orderBy }) {
   }
   // formatAppData parse the json object extract out tasks and create diffrent array of tasks based on filter selected by users.
   function formatAppData(tasksdata) {
+    // validating is no tasks in the database then return
+    if (!tasksdata || tasksdata.length === 0) return;
     let mp = getDataInMap(tasksdata, groupBy); // Fetching task data as map based on the groupBy criteria
     let temptask = [];
     for (let [key, value] of mp) {
@@ -49,9 +51,10 @@ export default function DashBoard({ groupBy, orderBy }) {
   }
 
   if (loading) return <p className="loadingIndicator">Loading Tasks...</p>;
+  if (!loading && !appData)
+    return <p className="loadingIndicator">No Tickets to show</p>;
   return (
     <div className="dashboard">
-      {" "}
       {/* Container for the dashboard */}
       {task.map(([group, tasks], key) => {
         if (tasks && task.length > 0) {
@@ -67,6 +70,7 @@ export default function DashBoard({ groupBy, orderBy }) {
             />
           );
         }
+        return <></>;
       })}
     </div>
   );

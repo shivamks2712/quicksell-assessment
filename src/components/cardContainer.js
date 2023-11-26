@@ -54,10 +54,10 @@ export default function CardContainer({
 
   const wrapperStyle = {
     padding: "0.2rem 0.75rem",
-    marginTop: "2rem",
     minWidth: "16rem",
     maxWidth: "18rem",
-    margin: "0rem 0.2rem",
+    margin: "1rem 0.3rem",
+    marginBottom: "auto",
   };
   return (
     <div style={wrapperStyle}>
