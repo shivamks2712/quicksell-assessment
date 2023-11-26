@@ -9,11 +9,18 @@ function Home() {
   const [groupBy, setGroupBy] = useState("status");
   const [orderBy, setOrderBy] = useState("priority");
 
+  const handleClickOutsideFilterBox = (event) => {
+    if (!document.getElementById("filterBoxWrapper").contains(event.target)) {
+      setFilterView(false);
+    }
+  };
+  document.addEventListener("click", handleClickOutsideFilterBox);
+
   return (
     <>
       {/* Navbar section */}
       <div className="navbar">
-        <div className="filter-box-wrapper ">
+        <div className="filter-box-wrapper" id="filterBoxWrapper">
           {/* Filter bar or filter options */}
           <div
             className="filter-box"
