@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+.card-container {
+  padding: 0.2rem 0.75rem 0.5rem;
+  margin: 0.5rem 0rem;
+  border-radius: 0.15rem;
+  background-color: white;
+}
+.card-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .header {
+    color: rgb(107 114 128);
+  }
+}
+.task-status {
+  width: 10px;
+  height: 10px;
+  font-size: xx-small;
+  border-radius: 50%;
+  align-self: flex-start;
+  margin-right: 0.5rem;
+  margin-top: 3px;
+}
+.task-name {
+  flex: 1;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.1;
+  margin-bottom: 0;
+  margin-top: 0px;
+}
+.feature-wrapper {
+  margin-top: 0.5rem;
+  color: rgb(107 114 128);
+  gap: 1rem;
+  .outline-dot-icon {
+    border: 0.5px solid rgb(107, 114, 128, 0.5);
+    border-radius: 5px;
+    padding: 2px 3px 0px 3px;
+  }
+}
+.feature {
+  display: flex;
+  width: fit-content;
+  align-self: baseline;
+  align-items: center;
+  padding: 1px 5px;
+  border: 0.5px solid rgb(107, 114, 128, 0.5);
+  border-radius: 5px;
+  .feature-request {
+    background-color: rgb(193, 193, 196);
+    width: 7px;
+    height: 7px;
+  }
+}
+.request-type {
+  font-size: 8px;
+  line-height: 1.5;
+  margin-left: 0.2rem;
+  font-weight: 500;
+}
+p,
+h3 {
+  font-family: "Poppins", sans-serif;
+}

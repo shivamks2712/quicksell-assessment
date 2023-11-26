@@ -1,0 +1,12 @@
+.dashboard {
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.dashboard::-webkit-scrollbar {
+  display: none;
+}
