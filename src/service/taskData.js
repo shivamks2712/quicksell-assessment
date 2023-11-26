@@ -90,6 +90,9 @@ const dummydata = {
     { id: "usr-5", name: "Suresh", available: true },
   ],
 };
+async function fetchData(){
+  await res
+}
 function getDataInMap(val) {
   let filteredData = new Map();
   dummydata.tickets.forEach((element) => {
