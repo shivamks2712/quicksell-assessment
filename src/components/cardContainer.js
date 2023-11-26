@@ -26,7 +26,7 @@ export default function CardContainer({
     if (tasks && tasks.length > 0) {
       let temp = [...tasks];
       temp.sort((a, b) => {
-        if (orderBy === "title" || groupBy == "priority") {
+        if (orderBy === "title" || groupBy === "priority") {
           return a.title.localeCompare(b.title);
         }
         return a.priority - b.priority;
