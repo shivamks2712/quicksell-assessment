@@ -57,7 +57,7 @@ export default function DashBoard({ groupBy, orderBy }) {
     <div className="dashboard">
       {/* Container for the dashboard */}
       {task.map(([group, tasks], key) => {
-        if (tasks && task.length > 0) {
+        if (tasks?.length > 0) {
           // Rendering CardContainer components for each group with tasks
           return (
             <CardContainer
